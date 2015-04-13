@@ -23,7 +23,13 @@
       var sankey = new Sankey();
     
       sankey.stack(0,["DECC ICF Budget"]);
-      sankey.stack(1,["Merge"]);
+      sankey.stack(1,['KfW',
+                      'ADB',
+                      'GiZ',
+                      'Green Investment Bank',
+                      'Other',
+                      'PIDG',
+                      'World Bank']);
       sankey.stack(2,["Good","Bad"]);
     
       sankey.setData([["Top",100,"Merge"],["Bottom",50,"Merge"],["Merge",70,"Good"],["Merge",80,"Bad"]]);
