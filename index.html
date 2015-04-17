@@ -20,6 +20,21 @@
       &nbsp;
     </div>
     <script type='text/javascript'>
+    // This is a fix for the weird error in IE9 on DECC machines. Ignore it otherwise.
+    var oldText = Raphael.prototype.text;
+
+    Raphael.prototype.text = function () {
+    var textElement = oldText.apply(this, arguments);
+
+    setTimeout(function () {
+        var tspanElement = textElement.node.getElementsByTagName('tspan')[0];
+        if (tspanElement) tspanElement.setAttribute('dy', 0);
+    }, 1);
+
+    return textElement;
+    };
+    
+    // Actual code for the ICF diagram starts here
       var sankey = new Sankey();
     
       sankey.stack(0,["DECC ICF Budget"]);
